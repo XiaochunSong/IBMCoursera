@@ -1,0 +1,29 @@
+{
+  "business": "Registration",
+  "rules": [
+    {
+      "name": "addToMC",
+      "description": "Add / Remove a person from the Management Control for my Establishment​",
+      "inputs": [{ "me": ["uuid"] }, { "user": ["uuid"] }],
+      "rule": "me.role IN [PRINCIPLE_AUTHORITY, ADMIN] AND user.role NOT IN $MC_LIST AND user IN $ESTAB_USERS_LIST"
+    },
+    {
+      "name": "printRegoCert",
+      "description": "Print a Certificate of Registration for my Establishment​",
+      "inputs": [{ "me": ["uuid"] }],
+      "rule": "me.role IN [PRINCIPLE_AUTHORITY, ADMIN, PRINT_PERMISSIONS]"
+    },
+    {
+      "name": "makePayment",
+      "description": "Make a pending payment",
+      "inputs": [{ "me": ["uuid"] }],
+      "rule": "me.role IN [PRINCIPLE_AUTHORITY, ADMIN, PAYMENT_PERMISSIONS]"
+    },
+    {
+      "name": "uploadAttachments",
+      "description": "Upload an Attachment",
+      "inputs": [{ "me": ["uuid"] }],
+      "rule": "me.role IN [PRINCIPLE_AUTHORITY, ADMIN]"
+    }
+  ]
+}
